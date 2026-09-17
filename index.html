@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7c9d7">
+<meta name="description" content="The 25th Memory — a cheerful friendship birthday experience for Prachi.">
+<title>The 25th Memory · Happy Birthday Prachi</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --bg:#fff7fa; --bg2:#ffeaf1; --ink:#3e3038; --muted:#806f78;
+  --pink:#e77f9f; --pink2:#f5aec4; --rose:#c95d7e; --lav:#cbbde8;
+  --card:rgba(255,255,255,.72); --line:rgba(91,63,74,.12);
+  --shadow:0 24px 70px rgba(133,82,105,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--bg);
+  overflow-x:hidden;line-height:1.65;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(247,183,205,.42),transparent 28%),
+    radial-gradient(circle at 90% 18%,rgba(205,192,237,.34),transparent 28%),
+    radial-gradient(circle at 45% 90%,rgba(255,214,225,.55),transparent 30%);
+}
+body::after{
+  content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+  background:conic-gradient(from 180deg,transparent,rgba(255,255,255,.7),transparent 30%);
+  animation:ambient 18s linear infinite;opacity:.55;
+}
+@keyframes ambient{to{transform:rotate(360deg)}}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 0;
+  background:rgba(255,247,250,.68);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(91,63,74,.08)
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;letter-spacing:.08em;font-size:.88rem}
+.logo em{color:var(--rose);font-style:normal}
+.nav-links{display:flex;gap:25px;font-size:.9rem;color:var(--muted)}
+.nav-links a{transition:.25s}
+.nav-links a:hover{color:var(--rose);transform:translateY(-1px)}
+
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 0 70px;position:relative}
+.hero-inner{max-width:850px}
+.badge{
+  display:inline-flex;gap:9px;align-items:center;padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.72);border:1px solid var(--line);box-shadow:0 10px 30px rgba(120,70,95,.08);
+  color:var(--rose);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  animation:float 4s ease-in-out infinite
+}
+h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,9vw,7.3rem);line-height:.95;margin:25px 0 20px;letter-spacing:-.045em}
+h1 span{color:var(--rose)}
+.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:1.08rem}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  border:0;border-radius:999px;padding:13px 21px;cursor:pointer;font-weight:700;
+  transition:.3s;box-shadow:0 12px 30px rgba(120,70,95,.12)
+}
+.btn-primary{background:var(--rose);color:white}
+.btn-secondary{background:rgba(255,255,255,.78);color:var(--ink);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 35px rgba(120,70,95,.18)}
+
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.55;pointer-events:none}
+.orb.one{width:120px;height:120px;background:#f7bdd0;left:4%;top:25%;animation:drift 7s ease-in-out infinite}
+.orb.two{width:75px;height:75px;background:#d8cdf0;right:7%;top:34%;animation:drift 9s ease-in-out infinite reverse}
+@keyframes drift{50%{transform:translate(18px,-25px) scale(1.08)}}
+@keyframes float{50%{transform:translateY(-7px)}}
+
+.section{padding:105px 0}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:38px}
+.kicker{font-size:.75rem;letter-spacing:.14em;color:var(--rose);font-weight:800}
+.section h2{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,5vw,4rem);line-height:1.05;margin-top:8px}
+.section-head p{max-width:450px;color:var(--muted)}
+
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+.glass{
+  background:var(--card);border:1px solid rgba(255,255,255,.8);box-shadow:var(--shadow);
+  border-radius:28px;padding:32px;backdrop-filter:blur(18px)
+}
+.note{font-size:1.12rem}
+.note strong{color:var(--rose)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.fact{padding:20px;border-radius:20px;background:rgba(255,255,255,.6);border:1px solid var(--line)}
+.fact b{display:block;font-size:1.5rem;color:var(--rose)}
+.fact span{font-size:.82rem;color:var(--muted)}
+
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.time{padding:18px 10px;border-radius:22px;text-align:center;background:rgba(255,255,255,.72);border:1px solid var(--line)}
+.time b{display:block;font-size:clamp(1.6rem,4vw,2.7rem);line-height:1;color:var(--rose)}
+.time small{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
+
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.memory-card{background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9);border-radius:25px;overflow:hidden;box-shadow:0 15px 45px rgba(120,70,95,.1);cursor:pointer;transition:.45s cubic-bezier(.2,.8,.2,1);outline:none}
+.memory-card:hover,.memory-card:focus{transform:translateY(-9px) rotate(.3deg);box-shadow:0 28px 65px rgba(120,70,95,.18)}
+.memory-image-wrap{position:relative;aspect-ratio:4/3;overflow:hidden;background:#f3e3e9}
+.memory-card img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.memory-card:hover img{transform:scale(1.07)}
+.memory-number{position:absolute;left:13px;top:13px;background:rgba(255,255,255,.84);padding:5px 9px;border-radius:999px;font-size:.7rem;font-weight:800;backdrop-filter:blur(8px)}
+.view-label{position:absolute;right:12px;bottom:12px;background:rgba(62,48,56,.78);color:white;padding:7px 10px;border-radius:999px;font-size:.72rem;opacity:0;transform:translateY(8px);transition:.3s}
+.memory-card:hover .view-label,.memory-card:focus .view-label{opacity:1;transform:none}
+.memory-card-body{padding:17px 18px 20px}
+.memory-card-body span{font-size:.68rem;color:var(--rose);font-weight:800;letter-spacing:.13em}
+.memory-card-body p{font-size:.91rem;color:var(--muted);margin-top:4px}
+
+.quote{text-align:center;max-width:780px;margin:auto}
+.quote-mark{font-family:serif;font-size:5rem;color:var(--pink2);line-height:.6}
+.quote p{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);margin:15px 0}
+.quote small{color:var(--muted)}
+
+.footer{padding:60px 0 80px;text-align:center;color:var(--muted);font-size:.88rem}
+.footer b{color:var(--rose)}
+
+/* Lightbox / slideshow */
+.lightbox{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(34,24,30,.94);padding:25px}
+.lightbox.open{display:grid;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.viewer{width:min(1200px,96vw);height:min(90vh,900px);position:relative;display:grid;place-items:center}
+.viewer img{max-width:92%;max-height:78vh;object-fit:contain;border-radius:16px;box-shadow:0 30px 90px rgba(0,0,0,.4);animation:imageIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes imageIn{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+.viewer-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;color:white}
+.viewer-title{font-weight:700}
+.viewer-controls{display:flex;gap:8px}
+.icon-btn{width:44px;height:44px;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(255,255,255,.1);color:white;cursor:pointer;font-size:1.15rem;transition:.25s}
+.icon-btn:hover{background:rgba(255,255,255,.2);transform:scale(1.06)}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border:0;border-radius:50%;background:rgba(255,255,255,.13);color:white;font-size:1.5rem;cursor:pointer;transition:.25s}
+.arrow:hover{background:rgba(255,255,255,.25);transform:translateY(-50%) scale(1.07)}
+.arrow.prev{left:0} .arrow.next{right:0}
+.viewer-bottom{position:absolute;left:7%;right:7%;bottom:0;color:white}
+.caption{text-align:center;margin-bottom:12px;color:rgba(255,255,255,.8);font-size:.9rem}
+.progress{height:3px;background:rgba(255,255,255,.18);overflow:hidden;border-radius:10px}
+.progress i{display:block;height:100%;width:0;background:#f6b4ca;transition:width .3s}
+.slideshow-hint{font-size:.72rem;text-align:center;margin-top:8px;color:rgba(255,255,255,.45)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:850px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .memory-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .section{padding:75px 0}
+  .section-head{display:block}
+  .section-head p{margin-top:15px}
+  .memory-grid{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .countdown{gap:7px}
+  .time{padding:14px 5px}
+  .viewer img{max-width:96%;max-height:70vh}
+  .arrow{width:43px;height:43px}
+  .arrow.prev{left:-3px} .arrow.next{right:-3px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#home">THE <em>25TH</em> MEMORY</a>
+    <div class="nav-links">
+      <a href="#story">Our Story</a><a href="#memories">Memories</a><a href="#birthday">Birthday</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="orb one"></div><div class="orb two"></div>
+  <div class="hero-inner reveal">
+    <span class="badge">✦ A friendship worth celebrating ✦</span>
+    <h1>The 25th<br><span>Memory</span></h1>
+    <p>A little digital scrapbook for a big birthday — packed with laughter, random moments, inside jokes and the kind of friendship that feels like family.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#memories">Open the memories ↗</a>
+      <a class="btn btn-secondary" href="#birthday">Birthday countdown</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">FRIENDS · FAMILY · CHAOS</div><h2>Not just a friend.<br>Family by choice.</h2></div>
+      <p>Some friendships don't need a perfect definition. They simply become part of your everyday life — the jokes, the advice, the arguments, the support and all the memories in between.</p>
+    </div>
+    <div class="about-grid">
+      <div class="glass note reveal">
+        <p>Happy 25th, <strong>Prachi!</strong> 🎉</p><br>
+        <p>Here's to another year of being wonderfully yourself. May there be more laughter than stress, more adventures than plans, and enough ridiculous moments to fill many more memory folders.</p><br>
+        <p>This little website is a reminder that the best friendships are built from <strong>small moments</strong> — random photos, silly conversations and being there when it matters.</p>
+      </div>
+      <div class="glass reveal">
+        <div class="facts">
+          <div class="fact"><b>25</b><span>Years of life</span></div>
+          <div class="fact"><b>∞</b><span>Inside jokes</span></div>
+          <div class="fact"><b>13</b><span>Photo memories</span></div>
+          <div class="fact"><b>1</b><span>Unforgettable friend</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="memories">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">THE MEMORY WALL</div><h2>13 moments.<br>Countless stories.</h2></div>
+      <p>Click any photo to see it properly. Use the slideshow controls to travel through every memory.</p>
+    </div>
+    <div class="memory-grid">
+      
+      <article class="memory-card reveal" tabindex="0" data-index="0">
+        <div class="memory-image-wrap">
+          <img src="photos/memory01.jpg" alt="Friendship memory 1" loading="lazy">
+          <span class="memory-number">01</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 01</span>
+          <p>One of those memories that instantly makes us smile.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="1">
+        <div class="memory-image-wrap">
+          <img src="photos/memory02.jpg" alt="Friendship memory 2" loading="lazy">
+          <span class="memory-number">02</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 02</span>
+          <p>Proof that the best moments are usually the most unplanned.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="2">
+        <div class="memory-image-wrap">
+          <img src="photos/memory03.jpg" alt="Friendship memory 3" loading="lazy">
+          <span class="memory-number">03</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 03</span>
+          <p>A little snapshot of our everyday chaos.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="3">
+        <div class="memory-image-wrap">
+          <img src="photos/memory04.jpg" alt="Friendship memory 4" loading="lazy">
+          <span class="memory-number">04</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 04</span>
+          <p>Good friends make ordinary days memorable.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="4">
+        <div class="memory-image-wrap">
+          <img src="photos/memory05.jpg" alt="Friendship memory 5" loading="lazy">
+          <span class="memory-number">05</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 05</span>
+          <p>Another memory for the forever collection.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="5">
+        <div class="memory-image-wrap">
+          <img src="photos/memory06.jpg" alt="Friendship memory 6" loading="lazy">
+          <span class="memory-number">06</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 06</span>
+          <p>The kind of picture that brings back a whole story.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="6">
+        <div class="memory-image-wrap">
+          <img src="photos/memory07.jpg" alt="Friendship memory 7" loading="lazy">
+          <span class="memory-number">07</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 07</span>
+          <p>Laughs, madness and absolutely no shortage of memories.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="7">
+        <div class="memory-image-wrap">
+          <img src="photos/memory08.jpg" alt="Friendship memory 8" loading="lazy">
+          <span class="memory-number">08</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 08</span>
+          <p>Just two friends making another moment count.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="8">
+        <div class="memory-image-wrap">
+          <img src="photos/memory09.jpg" alt="Friendship memory 9" loading="lazy">
+          <span class="memory-number">09</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 09</span>
+          <p>A memory worth keeping long after the day is over.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="9">
+        <div class="memory-image-wrap">
+          <img src="photos/memory10.jpg" alt="Friendship memory 10" loading="lazy">
+          <span class="memory-number">10</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 10</span>
+          <p>Some photos need no explanation — just a smile.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="10">
+        <div class="memory-image-wrap">
+          <img src="photos/memory11.jpg" alt="Friendship memory 11" loading="lazy">
+          <span class="memory-number">11</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 11</span>
+          <p>Our friendship, one random moment at a time.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="11">
+        <div class="memory-image-wrap">
+          <img src="photos/memory12.jpg" alt="Friendship memory 12" loading="lazy">
+          <span class="memory-number">12</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 12</span>
+          <p>Because the funniest memories are rarely planned.</p>
+        </div>
+      </article>
+      <article class="memory-card reveal" tabindex="0" data-index="12">
+        <div class="memory-image-wrap">
+          <img src="photos/memory13.jpg" alt="Friendship memory 13" loading="lazy">
+          <span class="memory-number">13</span>
+          <span class="view-label">View memory <b>↗</b></span>
+        </div>
+        <div class="memory-card-body">
+          <span>MEMORY 13</span>
+          <p>Chapter 25: another year, another collection of memories.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="birthday">
+  <div class="container">
+    <div class="glass quote reveal">
+      <div class="quote-mark">“</div>
+      <p>Life is better when you have someone who knows your chaos and still chooses to stay.</p>
+      <small>— Friendship, sisterhood & a lot of memories</small>
+      <div class="countdown" id="countdown">
+        <div class="time"><b id="days">00</b><small>Days</small></div>
+        <div class="time"><b id="hours">00</b><small>Hours</small></div>
+        <div class="time"><b id="mins">00</b><small>Minutes</small></div>
+        <div class="time"><b id="secs">00</b><small>Seconds</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  Made with <b>friendship</b>, laughter and a ridiculous number of memories. ✦
+</footer>
+
+<!-- Full photo viewer + slideshow -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="viewer" role="dialog" aria-modal="true" aria-label="Photo slideshow">
+    <div class="viewer-top">
+      <div class="viewer-title" id="viewerTitle">Memory 01 / 13</div>
+      <div class="viewer-controls">
+        <button class="icon-btn" id="playBtn" aria-label="Pause slideshow">Ⅱ</button>
+        <button class="icon-btn" id="fullBtn" aria-label="Fullscreen">⛶</button>
+        <button class="icon-btn" id="closeBtn" aria-label="Close">×</button>
+      </div>
+    </div>
+    <button class="arrow prev" id="prevBtn" aria-label="Previous photo">‹</button>
+    <img id="viewerImage" src="" alt="">
+    <button class="arrow next" id="nextBtn" aria-label="Next photo">›</button>
+    <div class="viewer-bottom">
+      <div class="caption" id="viewerCaption"></div>
+      <div class="progress"><i id="progressBar"></i></div>
+      <div class="slideshow-hint">Auto slideshow · 4 seconds · ← → navigate · Space play/pause · Esc close</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const photos = ['photos/memory01.jpg', 'photos/memory02.jpg', 'photos/memory03.jpg', 'photos/memory04.jpg', 'photos/memory05.jpg', 'photos/memory06.jpg', 'photos/memory07.jpg', 'photos/memory08.jpg', 'photos/memory09.jpg', 'photos/memory10.jpg', 'photos/memory11.jpg', 'photos/memory12.jpg', 'photos/memory13.jpg'];
+const captions = ['One of those memories that instantly makes us smile.', 'Proof that the best moments are usually the most unplanned.', 'A little snapshot of our everyday chaos.', 'Good friends make ordinary days memorable.', 'Another memory for the forever collection.', 'The kind of picture that brings back a whole story.', 'Laughs, madness and absolutely no shortage of memories.', 'Just two friends making another moment count.', 'A memory worth keeping long after the day is over.', 'Some photos need no explanation — just a smile.', 'Our friendship, one random moment at a time.', 'Because the funniest memories are rarely planned.', 'Chapter 25: another year, another collection of memories.'];
+let current = 0, timer = null, playing = true;
+
+const lightbox = document.getElementById('lightbox');
+const image = document.getElementById('viewerImage');
+const title = document.getElementById('viewerTitle');
+const caption = document.getElementById('viewerCaption');
+const progress = document.getElementById('progressBar');
+const playBtn = document.getElementById('playBtn');
+
+function renderPhoto(index){
+  current = (index + photos.length) % photos.length;
+  image.style.animation = 'none';
+  void image.offsetWidth;
+  image.style.animation = '';
+  image.src = photos[current];
+  image.alt = `Friendship memory ${current+1}`;
+  title.textContent = `Memory ${String(current+1).padStart(2,'0')} / ${photos.length}`;
+  caption.textContent = captions[current];
+  progress.style.width = `${((current+1)/photos.length)*100}%`;
+}
+
+function openViewer(index){
+  renderPhoto(index);
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  startSlideshow();
+}
+function closeViewer(){
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  stopSlideshow();
+}
+function nextPhoto(){ renderPhoto(current+1); }
+function prevPhoto(){ renderPhoto(current-1); }
+
+function startSlideshow(){
+  playing=true; playBtn.textContent='Ⅱ'; playBtn.setAttribute('aria-label','Pause slideshow');
+  clearInterval(timer);
+  timer=setInterval(nextPhoto,4000);
+}
+function stopSlideshow(){
+  playing=false; clearInterval(timer); timer=null;
+  playBtn.textContent='▶'; playBtn.setAttribute('aria-label','Play slideshow');
+}
+function toggleSlideshow(){ playing ? stopSlideshow() : startSlideshow(); }
+
+document.querySelectorAll('.memory-card').forEach(card=>{
+  card.addEventListener('click',()=>openViewer(Number(card.dataset.index)));
+  card.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();openViewer(Number(card.dataset.index));}
+  });
+});
+document.getElementById('nextBtn').onclick=nextPhoto;
+document.getElementById('prevBtn').onclick=prevPhoto;
+document.getElementById('closeBtn').onclick=closeViewer;
+playBtn.onclick=toggleSlideshow;
+document.getElementById('fullBtn').onclick=()=>{
+  const el=document.querySelector('.viewer');
+  if(!document.fullscreenElement) el.requestFullscreen?.();
+  else document.exitFullscreen?.();
+};
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeViewer();});
+document.addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==='Escape') closeViewer();
+  if(e.key==='ArrowRight') nextPhoto();
+  if(e.key==='ArrowLeft') prevPhoto();
+  if(e.code==='Space'){e.preventDefault();toggleSlideshow();}
+});
+
+let touchX=0;
+lightbox.addEventListener('touchstart',e=>touchX=e.changedTouches[0].screenX,{passive:true});
+lightbox.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-touchX;
+  if(Math.abs(dx)>45) dx<0?nextPhoto():prevPhoto();
+},{passive:true});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
+}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Birthday countdown — 19 September 2026
+const target=new Date('2026-09-19T00:00:00+05:30').getTime();
+function countdown(){
+  const now=Date.now(), diff=Math.max(0,target-now);
+  if(diff===0){
+    document.getElementById('countdown').innerHTML='<div style="grid-column:1/-1;padding:24px;font-size:1.6rem;font-weight:800;color:#c95d7e">🎉 HAPPY 25TH BIRTHDAY, PRACHI! 🎉</div>';
+    return;
+  }
+  document.getElementById('days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('hours').textContent=String(Math.floor(diff/3600000)%24).padStart(2,'0');
+  document.getElementById('mins').textContent=String(Math.floor(diff/60000)%60).padStart(2,'0');
+  document.getElementById('secs').textContent=String(Math.floor(diff/1000)%60).padStart(2,'0');
+}
+countdown(); setInterval(countdown,1000);
+</script>
+</body>
+</html>
